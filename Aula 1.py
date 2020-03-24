@@ -36,11 +36,10 @@ while not termino:
 
     
 
-"""
 zipobj = zip(lista_perguntas, respostas)
 d = dict(zipobj)
 print(d)
-"""
+
 
 
         
@@ -52,3 +51,9 @@ Como mostrar as infos para o usuário confirmar e depois retornar e fazer de nov
 Como que eu salvo no dicionário com nomes mais curtos?/cleaner code
 https://thispointer.com/python-how-to-convert-a-list-to-dictionary/
  '''
+'''
+Desafio aula 2:
+Estudar documentação da função open() para salvar um arquivo com as respostas do questionário
+Acumular informações no documento sem perder nenhuma anterior
+Salvar informações como csv
+'''
