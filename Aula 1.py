@@ -22,8 +22,9 @@ def do_over_q():
             
 def correcao():
     refazer = int(input("Qual pergunta gostaria de refazer? Por favor selecione um número correspondente à pergunta a ser refeita"))
-    i = refazer + 1
-    lista_respostas[i] = input (lista_perguntas[i])
+    i = refazer - 1
+    if refazer != 0:
+        lista_respostas[i] = input (lista_perguntas[i])
     return refazer
         
             
@@ -36,7 +37,7 @@ while not termino:
 
     
 
-zipobj = zip(lista_perguntas, respostas)
+zipobj = zip(lista_perguntas, lista_respostas)
 d = dict(zipobj)
 print(d)
 
