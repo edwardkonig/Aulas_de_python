@@ -36,9 +36,11 @@ while not termino:
 
     
 
+"""
 zipobj = zip(lista_perguntas, respostas)
 d = dict(zipobj)
 print(d)
+"""
 
 
         
