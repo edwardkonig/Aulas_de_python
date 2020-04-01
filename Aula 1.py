@@ -1,3 +1,5 @@
+import csv
+
 lista_perguntas = [
    "Qual é o seu nome?", 
    "Qual é a sua idade?",
@@ -41,8 +43,23 @@ zipobj = zip(lista_perguntas, lista_respostas)
 d = dict(zipobj)
 print(d)
 
+arquivo = ''
 
+with open('mycsvfile.csv') as f:  
+    line = f.readline()
+    while line != '':
+        arquivo += line
+        line = f.readline()
 
+with open('mycsvfile.csv', 'w+') as f:  
+    # w = csv.DictWriter(f, d.keys())
+    # if arquivo == '':
+    #     w.writeheader()
+    # else:
+    #     f.write(arquivo)
+    # w.writerow(d)
+    f.write(arquivo)
+    f.writelines(str(d.dict_values))
         
 
 
@@ -57,4 +74,13 @@ Desafio aula 2:
 Estudar documentação da função open() para salvar um arquivo com as respostas do questionário
 Acumular informações no documento sem perder nenhuma anterior
 Salvar informações como csv
+https://stackoverflow.com/questions/10373247/how-do-i-write-a-python-dictionary-to-a-csv-file
+https://docs.python.org/3/library/functions.html#open
+'''
+
+'''
+Desafio Aula 3:
+Arrumar bagunça, a+
+Como saber se escreve o header ou não (as chaves do dicionário), chave -> valor.... (biblioteca csv)
+Fazer um outro arquivo Python que busque dentro do arquivo csv uma ficha qualquer
 '''
