@@ -43,23 +43,27 @@ zipobj = zip(lista_perguntas, lista_respostas)
 d = dict(zipobj)
 print(d)
 
-arquivo = ''
+# arquivo = ''
 
-with open('mycsvfile.csv') as f:  
-    line = f.readline()
-    while line != '':
-        arquivo += line
-        line = f.readline()
+# with open('mycsvfile.csv') as f:  
+#     line = f.readline()
+#     while line != '':
+#         arquivo += line
+#         line = f.readline()
 
-with open('mycsvfile.csv', 'w+') as f:  
-    # w = csv.DictWriter(f, d.keys())
+with open('mycsvfile.csv', 'a+') as f:  
+    w = csv.DictWriter(f, d.keys())
+    if f.tell() == 0:
+        w.writeheader()
+    w.writerow(d)
+    #  w = csv.DictWriter(f, d.keys())
     # if arquivo == '':
     #     w.writeheader()
-    # else:
-    #     f.write(arquivo)
+    #  else:
+    #      f.write(arquivo)
     # w.writerow(d)
-    f.write(arquivo)
-    f.writelines(str(d.dict_values))
+    # f.write(arquivo)
+    # f.writelines(str(d.dict_values))
         
 
 
@@ -83,4 +87,5 @@ Desafio Aula 3:
 Arrumar bagunça, a+
 Como saber se escreve o header ou não (as chaves do dicionário), chave -> valor.... (biblioteca csv)
 Fazer um outro arquivo Python que busque dentro do arquivo csv uma ficha qualquer
+https://stackoverflow.com/questions/28325622/python-csv-writing-headers-only-once
 '''
