@@ -88,4 +88,6 @@ Arrumar bagunça, a+
 Como saber se escreve o header ou não (as chaves do dicionário), chave -> valor.... (biblioteca csv)
 Fazer um outro arquivo Python que busque dentro do arquivo csv uma ficha qualquer
 https://stackoverflow.com/questions/28325622/python-csv-writing-headers-only-once
+https://stackoverflow.com/questions/26082360/python-searching-csv-and-return-entire-row/26082493
+https://docs.python.org/3/library/csv.html
 '''
