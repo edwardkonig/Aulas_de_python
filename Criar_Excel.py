@@ -1,6 +1,7 @@
 import xlsxwriter
-workbook = xlsxwriter.Workbook('dictExcel.xlsx')
-worksheet = workbook.add_worksheet()
+import openpyxl
+# workbook = xlsxwriter.Workbook('dictExcel.xlsx')
+# worksheet = workbook.add_worksheet()
 dict_perguntas = {
   "nome":  "Qual é o seu nome?", 
    "idade": "Qual é a sua idade?",
@@ -8,42 +9,44 @@ dict_perguntas = {
    "cidade": "Onde você mora?"
 }
 
-dict_respostas =  {}
-  
-name = input(dict_perguntas["nome"])
-age = input (dict_perguntas["idade"])
-sex = input(dict_perguntas["sexo"])
-city = input(dict_perguntas["cidade"])
-dict_respostas["nome"] = name
-dict_respostas["idade"] = age
-dict_respostas["sexo"] = sex
-dict_respostas["cidade"] = city
+dict_respostas = dict.fromkeys(dict_perguntas.keys(), "") # e se fosse um valor com string cheia?
 
-def mergeDict(dict_perguntas, dict_respostas):
-   dict_combined = {**dict_perguntas, **dict_respostas}
-   for key, value in dict_combined.items():
-       if key in dict_perguntas and key in dict_respostas:
-               dict_combined[key] = [value , dict_perguntas[key]]
+for k,v in dict_perguntas.items():
+    r = input(v)
+    dict_respostas[k]= r
+# def mergeDict(dict_perguntas, dict_respostas):
+#    dict_combined = {**dict_perguntas, **dict_respostas}
+#    for key, value in dict_combined.items():
+#        if key in dict_perguntas and key in dict_respostas:
+#                dict_combined[key] = [value , dict_perguntas[key]]
  
-   return dict_combined
+#    return dict_combined
  
-dict_combined = mergeDict(dict_perguntas, dict_respostas)
-row = 0
-col = 0
+# dict_combined = mergeDict(dict_perguntas, dict_respostas)
+wb = openpyxl.load_workbook(filename='dictExcel.xlsx')
+ws = wb.active
+row = 1
+col = 1
 
-for key in dict_respostas.keys():
-    row = 0
-    worksheet.write(row, col, key)
-    row += 1
-    for item in dict_respostas[key]:
-        worksheet.write(row, col, item)
-        row += 1
-    col += 1
+for key,value in dict_respostas.items():
+    ws.cell(row, col, key)
+    ws.cell(row, col+1, value)
+    row+=1
+for row in dict_respostas:
+    ws.append(row)
 
-workbook.close()
+    
+wb.save('dictExcel.xlsx')
+# workbook.close()
 
 '''
 https://thispointer.com/how-to-merge-two-or-more-dictionaries-in-python/
 https://stackoverflow.com/questions/33575376/using-user-input-to-create-dictionaries-in-python
 https://stackoverflow.com/questions/45201288/how-to-create-header-in-excel-from-a-python-dictionary-keys
 '''
+'''
+Make Excel read + write
+Study list comprehension
+Rotate list and keep only one key
+'''
+

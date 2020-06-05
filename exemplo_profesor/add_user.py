@@ -7,30 +7,31 @@ perguntas = {
     "name": "Qual é o seu nome? ", 
     "age": "Qual é a sua idade? ",
     "gender": "Qual é o seu sexo? ",
-    "city": "Onde você mora? "
+    "city": "Onde você mora? ",
+    "dog_name": "Qual o nome do seu cachorro? "
 }
 
 # Poderíamos gerar um dicinário novo assim:
 
-respostas = {
-    "name": "", 
-    "age": "",
-    "gender": "",
-    "city": ""
-}
+# respostas = {
+#     "name": "", 
+#     "age": "",
+#     "gender": "",
+#     "city": ""
+# }
 
 # Mas o modo mais "pythonista" seria:
-# respostas = dict.fromkeys(perguntas.keys(), "")
+respostas = dict.fromkeys(perguntas.keys(), "")
 
 # fazendo a pergunta iterando o dicionário
-for key in perguntas:
-    value = perguntas[key]
-    resposta = input(value)
-    respostas[key] = resposta
+# for key in perguntas:
+#     value = perguntas[key]
+    # resposta = input(value)
+    # respostas[key] = resposta
 # Mas iterar o dicionário retorna somente as chaves, podemos então usar o método .items() para pegar cada item como um tupla
 # for item in perguntas.items():
 #     key = item[0]
-#     value = item[0]
+#     value = item[1]
 #     resposta = input(value)
 #     respostas[key] = resposta
 # Já que estamos manipulando uma tupla, podemos "desenpacotar" (unpack) -- super pythônico!
@@ -38,8 +39,8 @@ for key in perguntas:
 #     r = input(v)
 #     respostas[k] = r
 # Podemos otimizar ainda mais, sem que isso signifique perder "legibilidade"
-# for questao, texto_questao in perguntas.items():
-#     repostas[questao] = input(texto_questao)
+for questao, texto_questao in perguntas.items():
+    repostas[questao] = input(texto_questao)
 
 # def do_over_q():
 #     do_over = int (input("Qual pergunta gostaria de refazer? Por favor selecione um número correspondente à pergunta a ser refeita"))
@@ -108,11 +109,11 @@ def questionarioCompleto(questionario):
 
 
 # Mas oq fazemos com isso agora???
-while not questionarioCompleto(respostas):
-    for questao, texto_questao in perguntas.items():
-        if respostas[questao] == "":
-            respostas[questao] = input(texto_questao)
-    correcao()
+# while not questionarioCompleto(respostas):
+    # for questao, texto_questao in perguntas.items():
+    #     if respostas[questao] == "":
+    #         respostas[questao] = input(texto_questao)
+    # correcao()
 
 # Qual o problema disso?? Estou repetindo código!!
 def aplicarQuestionario(p, r):
@@ -123,9 +124,9 @@ def aplicarQuestionario(p, r):
 # E posso inclusive comentar o código pra primeira aplicação
 #  - Mas eu precisava da função aplicarQuestionario()?
 # Função nunca é d+
-# while not questionarioCompleto(respostas):
-#     aplicarQuestionario(perguntas, respostas)
-#     correcao()
+while not questionarioCompleto(respostas):
+    aplicarQuestionario(perguntas, respostas)
+    correcao()
 
 with open('respostas.csv', 'a+') as f:  
     w = csv.DictWriter(f, respostas.keys())

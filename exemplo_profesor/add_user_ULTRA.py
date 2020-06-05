@@ -12,22 +12,17 @@ p = {
 }
 
 # inciando as repostas
-r = {
-    "name": "", 
-    "age": "",
-    "gender": "",
-    "city": ""
-}
+respostas = dict.fromkeys(perguntas.keys(), "")
 
 # função para aplicar o questionario
 def aplicarQuestionario(perguntas, respostas):
     for questao, texto_questao in perguntas.items():
         if respostas[questao] == "":
             respostas[questao] = input(texto_questao)
-    correcao(respostas)
+    corrigirQuestionario(respostas)
 
 # função para definir correção do questionário
-def correcao(questionario):
+def corrigirQuestionario(questionario):
     refazer = input("Quais perguntas gostaria de fazer? Digite os números separados por vírgula: ")
     for q in [list(questionario)[int(i) - 1] for i in refazer.split(",") if i != '']:
         questionario[q] = ""

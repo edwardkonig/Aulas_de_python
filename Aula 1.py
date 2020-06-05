@@ -7,19 +7,15 @@ dict_perguntas = {
    "cidade": "Onde você mora?"
 }
 
-dict_respostas = {}
-lista_respostas = []
-while (True):
-  
-    name = input(dict_perguntas["nome"])
-    age = input (dict_perguntas["idade"])
-    sex = input(dict_perguntas["sexo"])
-    city = input(dict_perguntas["cidade"])
-    lista_respostas.append( {"nome":  name, 
-   "idade": age,
-   "sexo": sex,
-   "cidade": city})
-   break
+dict_respostas = {
+    "nome":  " ", 
+    "idade": " ",
+    "sexo": " ",
+    "cidade": " "
+}
+
+
+# lista_respostas = []
 
 # for pergunta in lista_perguntas:
 #     resposta = input(pergunta)
