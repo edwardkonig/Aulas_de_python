@@ -12,9 +12,6 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
     def get_queryset(self):
         return Question.objects.filter(pub_date__lte=timezone.now())
-       
-       
-       
 
 class DetailView(generic.DetailView):
     model = Question
@@ -43,4 +40,3 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
-    
